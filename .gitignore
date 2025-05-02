@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# dotenv environment variable files
+.env
+
+# build artifacts
+build/
+dist/
+
+# Mac
+.DS_Store
+
+# Webstorm
+.idea
