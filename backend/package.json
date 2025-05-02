@@ -1,22 +1,29 @@
 {
 	"name": "backend",
+	"type": "module",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"start": "nodemon --exec ts-node src/server.ts",
-		"migrate:make": "npx knex migrate:make",
-		"migrate:run": "npx knex migrate:latest"
+		"start:dev": "tsx watch src/server.ts",
+		"migrate": "node --import tsx ../node_modules/knex/bin/cli.js migrate:latest",
+		"migrate:make": "node --import tsx ../node_modules/knex/bin/cli.js migrate:make -x ts",
+		"build": "tsc"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"description": "",
 	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"cross-env": "^7.0.3",
 		"dotenv": "^16.5.0",
 		"fastify": "^5.3.2",
+		"jose": "^6.0.10",
 		"knex": "^3.1.0",
 		"objection": "^3.1.5",
-		"pg": "^8.15.6"
+		"pg": "^8.15.6",
+		"tsconfig-paths": "^4.2.0",
+		"tsx": "^4.19.4"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^8.31.1",

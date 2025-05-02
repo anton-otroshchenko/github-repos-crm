@@ -3,29 +3,45 @@ import { config as dotenvConfig } from "dotenv";
 dotenvConfig();
 
 const {
-	APP_PORT,
+	PORT,
 	DB_NAME,
 	DB_USERNAME,
 	DB_PASSWORD,
 	DB_HOST,
 	DB_PORT,
 	DB_CLIENT,
+	JWT_ALGORITHM,
+	JWT_EXPIRATION_TIME,
+	JWT_SECRET,
+	ENCRYPTION_ALGORITHM,
+	ENCRYPTION_SALT_ROUNDS,
+	ENCRYPTION_SECRET
 } = process.env;
 
 const config = {
 	APP: {
 		API_PATH: "/api",
-		PORT: APP_PORT,
+		PORT: PORT as string,
 	},
 	DB: {
-		DATABASE: DB_NAME,
-		USERNAME: DB_USERNAME,
-		PASSWORD: DB_PASSWORD,
-		HOST: DB_HOST,
-		PORT: DB_PORT,
-		CLIENT: DB_CLIENT,
+		DATABASE: DB_NAME as string,
+		USERNAME: DB_USERNAME as string,
+		PASSWORD: DB_PASSWORD as string,
+		HOST: DB_HOST as string,
+		PORT: DB_PORT as string,
+		CLIENT: DB_CLIENT as string,
 		DEBUG: false,
 	},
+	JWT: {
+		ALGORITHM: JWT_ALGORITHM as string,
+		EXPIRATION_TIME: JWT_EXPIRATION_TIME as string,
+		SECRET: JWT_SECRET as string
+	},
+	ENCRYPTION: {
+		ALGORITHM: ENCRYPTION_ALGORITHM as string,
+		SALT_ROUNDS: ENCRYPTION_SALT_ROUNDS as number,
+		SECRET: ENCRYPTION_SECRET as string
+	}
 };
 
 export { config };
