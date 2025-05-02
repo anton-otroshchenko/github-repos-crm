@@ -1,23 +1,27 @@
 {
-  "name": "github-repos-crm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anton-otroshchenko/github-repos-crm.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/anton-otroshchenko/github-repos-crm/issues"
-  },
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
-  "homepage": "https://github.com/anton-otroshchenko/github-repos-crm#readme"
+	"name": "github-repos-crm",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"_prettier": "prettier \"**/*.{js,ts,tsx,json,md,css,html}\"",
+		"format": "npm run _prettier -- --write"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anton-otroshchenko/github-repos-crm.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/anton-otroshchenko/github-repos-crm/issues"
+	},
+	"workspaces": [
+		"backend",
+		"frontend"
+	],
+	"homepage": "https://github.com/anton-otroshchenko/github-repos-crm#readme",
+	"dependencies": {
+		"prettier": "^3.5.3"
+	}
 }
