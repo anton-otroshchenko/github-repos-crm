@@ -9,6 +9,7 @@ const config: Config = {
 	singleQuote: false,
 	tabWidth: 2,
 	useTabs: true,
+	endOfLine: "lf",
 };
 
 export default config;
