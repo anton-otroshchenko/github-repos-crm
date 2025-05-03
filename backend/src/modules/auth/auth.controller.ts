@@ -1,5 +1,6 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import { type AuthService } from "~/modules/auth/auth.service.js";
+import { type AuthService } from "./auth.service.js";
+import { UserSignInRequestDto } from "shared";
 
 class AuthController {
 	private authService: AuthService;
@@ -12,37 +13,34 @@ class AuthController {
 		request: FastifyRequest,
 		reply: FastifyReply,
 	): Promise<void> {
-		try {
-			const result = await this.authService.signIn(request.body);
-			reply.send(result);
-		} catch (error) {
-			reply.status(401).send({ message: (error as Error).message });
-		}
+		const result = await this.authService.signIn(
+			request.body as UserSignInRequestDto,
+		);
+		reply.send(result);
 	}
 
 	public async signUp(
 		request: FastifyRequest,
 		reply: FastifyReply,
 	): Promise<void> {
-		try {
-			const result = await this.authService.signUp(request.body);
-			reply.send(result);
-		} catch (error) {
-			reply.status(400).send({ message: (error as Error).message });
-		}
+		const result = await this.authService.signUp(
+			request.body as UserSignInRequestDto,
+		);
+		reply.send(result);
 	}
 
 	public async getAuthenticatedUser(
 		request: FastifyRequest,
 		reply: FastifyReply,
 	): Promise<void> {
-		try {
-			const userId = (request as any).user?.id;
-			const result = await this.authService.getAuthenticatedUser(userId);
-			reply.send(result);
-		} catch (error) {
-			reply.status(404).send({ message: (error as Error).message });
+		const userId = request.user?.id;
+
+		if (!userId) {
+			throw new Error("Unauthorized");
 		}
+
+		const result = await this.authService.getAuthenticatedUser(userId);
+		reply.send(result);
 	}
 }
 

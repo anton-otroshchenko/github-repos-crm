@@ -4,8 +4,11 @@ import {
 	UserSignInRequestDto,
 	UserSignUpRequestDto,
 } from "./libs/types/types.js";
+import { User } from "shared";
 
-const API_BASE_URL = "http://localhost:3000/auth";
+const baseUrl = import.meta.env["VITE_BASE_URL"];
+
+const API_BASE_URL = `${baseUrl}/api/v1/auth`;
 
 const authApi = {
 	async signIn(payload: UserSignInRequestDto): Promise<UserAuthResponseDto> {
@@ -18,7 +21,7 @@ const authApi = {
 		return response.data;
 	},
 
-	async getAuthenticatedUser(): Promise<UserAuthResponseDto> {
+	async getAuthenticatedUser(): Promise<User> {
 		const token = localStorage.getItem("auth_token");
 		const response = await axios.get(`${API_BASE_URL}/me`, {
 			headers: {

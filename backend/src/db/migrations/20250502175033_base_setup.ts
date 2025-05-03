@@ -25,7 +25,7 @@ export async function up(knex: Knex): Promise<void> {
 		table.integer("stars").defaultTo(0);
 		table.integer("forks").defaultTo(0);
 		table.integer("open_issues").defaultTo(0);
-		table.bigInteger("created_at_unix").notNullable();
+		table.timestamp("created_at_unix").notNullable();
 		table.timestamp("added_at").defaultTo(knex.fn.now());
 		table.timestamp("updated_at").defaultTo(knex.fn.now());
 		table.unique(["user_id", "owner", "repo_name"]);

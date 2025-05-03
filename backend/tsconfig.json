@@ -1,12 +1,15 @@
 {
 	"extends": "../tsconfig.json",
-	"files": ["src/server.ts"],
+	"files": ["src/server.d.ts"],
 	"include": ["**/*.ts", "**/*.js"],
 	"exclude": ["node_modules", "build"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"~/*": ["./src/*"]
-		}
+		},
+		"noEmitOnError": false,
+		"skipLibCheck": true,
+		"isolatedModules": false
 	}
 }

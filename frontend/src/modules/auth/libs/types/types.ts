@@ -1,18 +1,9 @@
-export type UserAuthResponseDto = {
-	user: {
-		id: string;
-		email: string;
-	};
-	token: string;
-};
-
-export type UserSignInRequestDto = {
-	email: string;
-	password: string;
-};
+import { UserAuthResponseDto, UserSignInRequestDto } from "shared";
 
 export type UserSignUpRequestDto = UserSignInRequestDto & {};
 
 export type AsyncThunkConfig = {
 	rejectValue: string;
 };
+
+export { type UserAuthResponseDto, type UserSignInRequestDto };

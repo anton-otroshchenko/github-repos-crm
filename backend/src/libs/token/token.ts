@@ -7,9 +7,4 @@ const token = new BaseToken({
 	secret: config.JWT.SECRET,
 });
 
-const projectApiKey = new BaseToken({
-	algorithm: config.JWT.ALGORITHM,
-	secret: config.JWT.SECRET,
-});
-
-export { projectApiKey, token };
+export { token };

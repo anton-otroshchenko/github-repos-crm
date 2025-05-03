@@ -15,6 +15,8 @@ const {
 	ENCRYPTION_ALGORITHM,
 	ENCRYPTION_SALT_ROUNDS,
 	ENCRYPTION_SECRET,
+	GITHUB_API_URL,
+	GITHUB_TOKEN,
 } = process.env;
 
 const config = {
@@ -40,6 +42,10 @@ const config = {
 		ALGORITHM: ENCRYPTION_ALGORITHM as string,
 		SALT_ROUNDS: ENCRYPTION_SALT_ROUNDS,
 		SECRET: ENCRYPTION_SECRET as string,
+	},
+	GITHUB: {
+		API_URL: GITHUB_API_URL as string,
+		TOKEN: GITHUB_TOKEN as string,
 	},
 };
 
