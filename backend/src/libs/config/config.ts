@@ -1,5 +1,4 @@
 import { config as dotenvConfig } from "dotenv";
-
 dotenvConfig();
 
 const {
@@ -15,7 +14,7 @@ const {
 	JWT_SECRET,
 	ENCRYPTION_ALGORITHM,
 	ENCRYPTION_SALT_ROUNDS,
-	ENCRYPTION_SECRET
+	ENCRYPTION_SECRET,
 } = process.env;
 
 const config = {
@@ -35,13 +34,13 @@ const config = {
 	JWT: {
 		ALGORITHM: JWT_ALGORITHM as string,
 		EXPIRATION_TIME: JWT_EXPIRATION_TIME as string,
-		SECRET: JWT_SECRET as string
+		SECRET: JWT_SECRET as string,
 	},
 	ENCRYPTION: {
 		ALGORITHM: ENCRYPTION_ALGORITHM as string,
-		SALT_ROUNDS: ENCRYPTION_SALT_ROUNDS as number,
-		SECRET: ENCRYPTION_SECRET as string
-	}
+		SALT_ROUNDS: ENCRYPTION_SALT_ROUNDS,
+		SECRET: ENCRYPTION_SECRET as string,
+	},
 };
 
 export { config };

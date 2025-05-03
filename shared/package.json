@@ -1,0 +1,16 @@
+{
+	"name": "shared",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "build/index.js",
+	"types": "src/index.ts",
+	"scripts": {
+		"build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"yup": "^1.6.1"
+	}
+}

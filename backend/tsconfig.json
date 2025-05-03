@@ -1,6 +1,6 @@
 {
 	"extends": "../tsconfig.json",
-	"files": ["src/server.d.ts"],
+	"files": ["src/server.ts"],
 	"include": ["**/*.ts", "**/*.js"],
 	"exclude": ["node_modules", "build"],
 	"compilerOptions": {
