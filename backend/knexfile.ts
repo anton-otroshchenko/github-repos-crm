@@ -1,5 +1,5 @@
 import { knexSnakeCaseMappers } from "objection";
-import { config } from "./src/libs/config/config.ts";
+import { config } from "./src/libs/config/config.js";
 
 const {
 	DATABASE: database,
@@ -11,7 +11,7 @@ const {
 	DEBUG: debug,
 } = config.DB;
 
-const knexConfig = {
+export default {
 	client,
 	connection: {
 		user: username,
@@ -27,5 +27,3 @@ const knexConfig = {
 	debug,
 	...knexSnakeCaseMappers({ underscoreBetweenUppercaseLetters: true }),
 };
-
-export default knexConfig;

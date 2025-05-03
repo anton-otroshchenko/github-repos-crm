@@ -5,7 +5,11 @@
 	"main": "index.js",
 	"scripts": {
 		"_prettier": "prettier \"**/*.{js,ts,tsx,json,md,css,html}\"",
-		"format": "npm run _prettier -- --write"
+		"format": "npm run _prettier -- --write",
+		"build:shared": "npm run build -w shared",
+		"build:frontend": "npm run build -w frontend",
+		"build:backend": "npm run build -w backend",
+		"build": "npm run build:shared && npm run build:backend && npm run build:frontend"
 	},
 	"repository": {
 		"type": "git",
@@ -18,10 +22,12 @@
 	},
 	"workspaces": [
 		"backend",
-		"frontend"
+		"frontend",
+		"shared"
 	],
 	"homepage": "https://github.com/anton-otroshchenko/github-repos-crm#readme",
 	"dependencies": {
-		"prettier": "^3.5.3"
+		"prettier": "^3.5.3",
+		"tsc-alias": "^1.8.15"
 	}
 }

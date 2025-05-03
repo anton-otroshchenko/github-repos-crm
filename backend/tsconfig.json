@@ -1,12 +1,12 @@
 {
+	"extends": "../tsconfig.json",
+	"files": ["src/server.ts"],
+	"include": ["**/*.ts", "**/*.js"],
+	"exclude": ["node_modules", "build"],
 	"compilerOptions": {
-		"target": "es2016",
-		"module": "commonjs",
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"skipLibCheck": true,
-		"types": ["node", "fastify-cors"],
-		"allowImportingTsExtensions": true
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
 	}
 }
