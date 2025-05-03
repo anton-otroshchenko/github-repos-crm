@@ -1,4 +1,5 @@
-import { type UserModel } from "~/modules/users/user.model.js";
+import { type UserModel } from "./user.model.js";
+import { UserCreateEntity } from "shared";
 
 class UserRepository {
 	private userModel: typeof UserModel;
@@ -7,25 +8,26 @@ class UserRepository {
 		this.userModel = userModel;
 	}
 
-	public async create(entity: any): Promise<any> {
+	public async create(entity: UserCreateEntity): Promise<UserModel> {
 		const { email, passwordHash, passwordSalt } = entity;
-		console.log(entity);
 
 		return this.userModel
 			.query()
 			.insert({
 				email,
-				password_hash: passwordHash,
-				password_salt: passwordSalt,
+				passwordHash: passwordHash,
+				passwordSalt: passwordSalt,
 			})
 			.returning("*");
 	}
 
-	public async find(id: number): Promise<null | any> {
+	public async find(id: number): Promise<null | UserModel | undefined> {
 		return this.userModel.query().findById(id);
 	}
 
-	public async findByEmail(email: string): Promise<null | any> {
+	public async findByEmail(
+		email: string,
+	): Promise<null | UserModel | undefined> {
 		return this.userModel.query().findOne({ email });
 	}
 }

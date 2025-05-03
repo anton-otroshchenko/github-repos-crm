@@ -1,12 +1,12 @@
 import { Model, type RelationMappings } from "objection";
-import { GithubProjectModel } from "~/modules/github-projects/github-project.model.js";
+import { GithubProjectModel } from "../github-projects/github-project.model.js";
 
 class UserModel extends Model {
 	public id!: number;
 
 	public email!: string;
-	public password_hash!: string;
-	public password_salt!: string;
+	public passwordHash!: string;
+	public passwordSalt!: string;
 	public created_at!: Date;
 	public updated_at!: Date;
 

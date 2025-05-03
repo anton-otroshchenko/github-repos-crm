@@ -1,12 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { SignUp, SignIn } from "./components/index.js";
-import { useAppDispatch, useAppSelector } from "../../libs/hooks/index.js";
+import { SignUp, SignIn } from "./components/components.js";
+import { useAppDispatch, useAppSelector } from "../../libs/hooks/hooks.js";
 import {
 	UserSignInRequestDto,
 	UserSignUpRequestDto,
 } from "../../modules/auth/libs/types/types.js";
 import { selectAuth } from "../../modules/auth/slices/auth.slice.js";
 import { signIn, signUp } from "../../modules/auth/slices/auth.thunks.js";
+import { useEffect } from "react";
+import { AppRoute } from "~/libs/enums/app-route/app-route.enum.js";
 
 const Auth = () => {
 	const { pathname } = useLocation();
@@ -17,10 +19,16 @@ const Auth = () => {
 	const dispatch = useAppDispatch();
 	const { user, isLoading, error } = useAppSelector(selectAuth);
 
+	useEffect(() => {
+		if (user) {
+			navigate(AppRoute.PROJECTS);
+		}
+	}, [user, dispatch, navigate]);
+
 	const handleSignIn = async (credentials: UserSignInRequestDto) => {
 		try {
 			await dispatch(signIn(credentials)).unwrap();
-			navigate("/");
+			navigate(AppRoute.PROJECTS);
 		} catch (error) {
 			console.error("Login failed:", error);
 		}
@@ -29,7 +37,7 @@ const Auth = () => {
 	const handleSignUp = async (credentials: UserSignUpRequestDto) => {
 		try {
 			await dispatch(signUp(credentials)).unwrap();
-			navigate("/");
+			navigate(AppRoute.PROJECTS);
 		} catch (error) {
 			console.error("Sign up failed:", error);
 		}

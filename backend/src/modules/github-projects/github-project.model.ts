@@ -1,5 +1,5 @@
 import { Model, type RelationMappings } from "objection";
-import { UserModel } from "~/modules/users/user.model.js";
+import { UserModel } from "../users/user.model.js";
 
 class GithubProjectModel extends Model {
 	public id!: number;
@@ -7,12 +7,12 @@ class GithubProjectModel extends Model {
 	public user_id!: number;
 
 	public owner!: string;
-	public repo_name!: string;
+	public repoName!: string;
 	public repo_url!: string;
 	public stars: number = 0;
 	public forks: number = 0;
 	public open_issues: number = 0;
-	public created_at_unix!: number;
+	public createdAtUnix!: number;
 	public added_at!: Date;
 	public updated_at!: Date;
 

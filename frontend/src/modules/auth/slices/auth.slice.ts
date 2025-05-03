@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { type UserAuthResponseDto } from "../libs/types/types.js";
 import { getAuthenticatedUser, logout, signIn, signUp } from "./auth.thunks.js";
+import { User } from "shared";
 
 type AuthState = {
-	user: UserAuthResponseDto | null;
+	user: User | null;
 	isLoading: boolean;
 	error: string | null;
 };
 
 const initialState: AuthState = {
 	user: null,
-	isLoading: false,
+	isLoading: true,
 	error: null,
 };
 
@@ -27,11 +27,11 @@ const authSlice = createSlice({
 		});
 		builder.addCase(signIn.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.user = action.payload;
+			state.user = action.payload.user;
 		});
 		builder.addCase(signIn.rejected, (state, action) => {
 			state.isLoading = false;
-			state.error = action.payload ?? "Sign in failed";
+			state.error = (action.payload ?? "Sign in failed") as string;
 		});
 
 		builder.addCase(signUp.pending, (state) => {
@@ -40,11 +40,11 @@ const authSlice = createSlice({
 		});
 		builder.addCase(signUp.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.user = action.payload;
+			state.user = action.payload.user;
 		});
 		builder.addCase(signUp.rejected, (state, action) => {
 			state.isLoading = false;
-			state.error = action.payload ?? "Sign up failed";
+			state.error = (action.payload ?? "Sign up failed") as string;
 		});
 
 		builder.addCase(getAuthenticatedUser.pending, (state) => {
@@ -57,7 +57,8 @@ const authSlice = createSlice({
 		});
 		builder.addCase(getAuthenticatedUser.rejected, (state, action) => {
 			state.isLoading = false;
-			state.error = action.payload ?? "Failed to get authenticated user";
+			state.error = (action.payload ??
+				"Failed to get authenticated user") as string;
 		});
 
 		builder.addCase(logout.fulfilled, (state) => {
@@ -73,8 +74,5 @@ export const { actions: authActions } = authSlice;
 export const selectAuth = (state: { auth: AuthState }) => state.auth;
 export const selectCurrentUser = (state: { auth: AuthState }) =>
 	state.auth.user;
-export const selectAuthLoading = (state: { auth: AuthState }) =>
-	state.auth.isLoading;
-export const selectAuthError = (state: { auth: AuthState }) => state.auth.error;
 
 export type { AuthState };
