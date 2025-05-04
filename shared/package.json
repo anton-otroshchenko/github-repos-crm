@@ -8,7 +8,9 @@
 		"build": "rm -rf build && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
 		"prepack": "npm run build"
 	},
-	"files": ["build/**/*"],
+	"files": [
+		"build/**/*"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {

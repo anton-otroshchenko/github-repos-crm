@@ -13,18 +13,18 @@
 
 root/  
 ├── backend/  
-│   └── src/  
-│       ├── db/         # Migrations and seeds  
-│       ├── libs/       # Services not related to DB entities  
-│       └── modules/    # Logic related to DB entities  
-│   └── .env            # Required environment variables  
+│ └── src/  
+│ ├── db/ # Migrations and seeds  
+│ ├── libs/ # Services not related to DB entities  
+│ └── modules/ # Logic related to DB entities  
+│ └── .env # Required environment variables  
 ├── frontend/  
-│   └── src/  
-│       ├── libs/       # Common files (helpers, components, hooks, etc.)  
-│       ├── modules/    # API service and Redux slices  
-│       └── pages/      # App pages  
-│   └── .env            # Required environment variables  
-├── shared/             # Shared types, enums, schemas  
+│ └── src/  
+│ ├── libs/ # Common files (helpers, components, hooks, etc.)  
+│ ├── modules/ # API service and Redux slices  
+│ └── pages/ # App pages  
+│ └── .env # Required environment variables  
+├── shared/ # Shared types, enums, schemas  
 └── docker-compose.yml
 
 ---
@@ -39,7 +39,6 @@ These should contain:
 
 - A GitHub token (for accessing private packages if needed)
 - Database credentials (in backend)
-
 
 ---
 
@@ -94,4 +93,3 @@ This will start the entire project using Docker containers.
 
 - Ensure `.env` files are properly configured before running the app.
 - Always build the `shared` package before starting frontend or backend if it has been modified.
-

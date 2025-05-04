@@ -10,7 +10,7 @@ type Properties = {
 	onSubmit: (credentials: UserSignUpRequestDto) => Promise<void>;
 };
 
-const SignUp:React.FC<Properties> = ({ onSubmit }) => {
+const SignUp: React.FC<Properties> = ({ onSubmit }) => {
 	const {
 		register,
 		handleSubmit,
