@@ -24,5 +24,5 @@ RUN npm run build:shared
 # Set working directory to frontend
 WORKDIR /app/frontend
 
-# Start frontend in development mode
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+# For frontend development
+CMD ["sh", "-c", "cd /app/shared && npm run build && cd /app/frontend && npm run dev -- --host 0.0.0.0"]

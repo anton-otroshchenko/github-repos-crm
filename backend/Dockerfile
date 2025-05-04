@@ -2,27 +2,38 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package.json files
+# Copy package files
 COPY package*.json ./
 COPY backend/package*.json ./backend/
 COPY shared/package*.json ./shared/
 
-# Copy TypeScript config files
+# Copy tsconfigs
 COPY tsconfig.json ./
 COPY shared/tsconfig*.json ./shared/
 COPY backend/tsconfig*.json ./backend/
-
-# Install dependencies
-RUN npm install
-
-# Copy source code
 COPY shared/ ./shared/
 COPY backend/ ./backend/
 
-# Build shared package
-RUN npm run build:shared
+# Install root deps (including shared as a workspace)
+RUN npm install
 
-# Set working directory to backend
+# Install backend dependencies (this will symlink shared properly)
 WORKDIR /app/backend
+RUN npm install
 
-CMD ["npm", "run", "start:dev"]
+# Build shared package
+WORKDIR /app/shared
+RUN npm install && npm run build
+
+# Build backend package
+WORKDIR /app/backend
+RUN npm run build
+
+RUN cp -r ../node_modules/ ./node_modules/
+
+RUN rm -rf ./node_modules/shared && \
+    ln -s /app/shared/build ./node_modules/shared
+
+
+# Start the backend
+CMD sh -c "cd /app/shared && npm run build && cd /app/backend && npm run migrate && npm run start:dev"
