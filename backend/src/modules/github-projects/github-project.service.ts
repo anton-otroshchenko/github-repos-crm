@@ -63,7 +63,6 @@ class GithubProjectService {
 
 	public async getUserProjects(userId: number): Promise<GithubProject[]> {
 		const projects = await this.githubProjectRepository.getUserProjects(userId);
-		console.log(projects);
 		return projects.map(GithubProjectMapper.toDomain);
 	}
 

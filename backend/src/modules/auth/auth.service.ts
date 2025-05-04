@@ -23,7 +23,6 @@ class AuthService {
 	): Promise<UserAuthResponseDto> {
 		const userEntity = await this.userService.getByEmail(userRequestDto.email);
 
-		console.log(userEntity);
 		const { passwordHash } = userEntity;
 
 		const isPasswordCorrect = await this.encryptionService.compare(

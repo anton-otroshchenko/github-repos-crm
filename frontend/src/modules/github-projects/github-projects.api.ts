@@ -23,7 +23,6 @@ const githubProjectApi = {
 
 	async addProject(payload: AddProjectPayload): Promise<GithubProject> {
 		const token = localStorage.getItem("auth_token");
-		console.log(token);
 		const response = await axios.post(`${API_BASE_URL}`, payload, {
 			headers: {
 				Authorization: `Bearer ${token}`,

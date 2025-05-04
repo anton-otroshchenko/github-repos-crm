@@ -16,13 +16,13 @@ import {
 } from "../../modules/github-projects/slices/github-projects.slice.js";
 import { Button, Header, Input } from "../../libs/components/components.js";
 import { ProjectItem } from "./components/components.js";
+import {notification} from "../../libs/modules/notification/notification.module.js";
 
 const ProjectsPage = () => {
 	const dispatch = useAppDispatch();
 	const user = useAppSelector(selectCurrentUser);
 	const projects = useAppSelector(selectProjects);
 	const isLoading = useAppSelector(selectIsLoading);
-	const error = useAppSelector(selectError);
 	const [repoPath, setRepoPath] = useState("");
 
 	useEffect(() => {
@@ -45,16 +45,19 @@ const ProjectsPage = () => {
 				repoPath,
 			}),
 		).then(() => {
+			notification.success('Successfully added a new project');
 			setRepoPath("");
 		});
 	};
 
 	const handleUpdateProject = (id: number) => {
 		dispatch(refreshProject(id));
+		notification.success('Successfully updated a project');
 	};
 
 	const handleDeleteProject = (id: number) => {
 		dispatch(deleteProject(id));
+		notification.success('Successfully deleted a project');
 	};
 
 	const projectsToDisplay = projects ?? [];

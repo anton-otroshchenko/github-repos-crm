@@ -6,21 +6,16 @@ import { UserSignUpRequestDto } from "~/modules/auth/libs/types/types.js";
 import { Input, Button } from "~/libs/components/components.js";
 import { AppRoute } from "~/libs/enums/enums.js";
 
-type SignUpFormData = {
-	email: string;
-	password: string;
-};
-
-type SignUpProps = {
+type Properties = {
 	onSubmit: (credentials: UserSignUpRequestDto) => Promise<void>;
 };
 
-const SignUp = ({ onSubmit }: SignUpProps) => {
+const SignUp:React.FC<Properties> = ({ onSubmit }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm<SignUpFormData>({
+	} = useForm<UserSignUpRequestDto>({
 		resolver: yupResolver(userSignUpSchema),
 	});
 

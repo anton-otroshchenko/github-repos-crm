@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "../../../../libs/components/components.js";
-import CreatedIcon from "../../../../assets/icons/CreatedIcon.js";
-import StarIcon from "../../../../assets/icons/StarIcon.js";
-import ForkIcon from "../../../../assets/icons/ForkIcon.js";
-import IssueIcon from "../../../../assets/icons/IssueIcon.js";
-import { formatDate } from "../../../../libs/helpers/helpers.js";
+import { Button } from "~/libs/components/components.js";
+import CreatedIcon from "~/assets/icons/CreatedIcon.js";
+import StarIcon from "~/assets/icons/StarIcon.js";
+import ForkIcon from "~/assets/icons/ForkIcon.js";
+import IssueIcon from "~/assets/icons/IssueIcon.js";
+import { formatDate } from "~/libs/helpers/helpers.js";
 import { GithubProject } from "shared";
 
 type Properties = {

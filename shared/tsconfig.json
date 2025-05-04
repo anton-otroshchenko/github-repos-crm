@@ -1,8 +1,15 @@
 {
-	"extends": "../tsconfig.json",
-	"include": ["**/*.ts", "**/*.js"],
-	"exclude": ["node_modules", "build"],
 	"compilerOptions": {
-		"baseUrl": "."
+		"target": "ES2022",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": ".",
+		"paths": {
+			"@shared/*": ["src/*"]
+		}
 	}
 }
