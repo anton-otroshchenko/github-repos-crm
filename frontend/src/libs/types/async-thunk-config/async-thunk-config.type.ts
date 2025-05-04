@@ -1,4 +1,3 @@
-// async-thunk-config.ts
 import type {
 	RootState,
 	StoreExtraArgument,
