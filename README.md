@@ -1,6 +1,6 @@
 # Project Setup Instructions
 
-## Requirements
+## Versions Used
 
 - **Node.js**: v23.6.1
 - **npm**: v10.9.2
